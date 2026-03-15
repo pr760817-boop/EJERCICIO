@@ -50,6 +50,7 @@ function calcular() {
                 resultado = combine.name();
                 mostrarResultado(`👤 El nombre es: ${resultado}`);
                 break;
+            
 
             default:
                 throw new Error('Operación no válida');
@@ -65,4 +66,4 @@ function mostrarResultado(mensaje, tipo = 'success') {
     resultadosDiv.className = `result ${tipo}`;
 }
 
-btncalcular.addEventListener('click', calcular);
+btncalcular.addEventListener('click', calcular); 
