@@ -13,9 +13,9 @@ function calcular() {
         const num2 = parseFloat(numero2Input.value);
 
         // Validación: solo permitir strings en "nombre"
-        if (operacion !== 'nombre' && (isNaN(num1) || isNaN(num2))) {
-            throw new Error('Por favor ingresa números válidos');
-        }
+        if (operacion !== 'nombre' && operacion !== 'contador' && (isNaN(num1) || isNaN(num2))) {
+    throw new Error('Por favor ingresa números válidos');
+}
 
         let resultado;
 
@@ -50,7 +50,26 @@ function calcular() {
                 resultado = combine.name();
                 mostrarResultado(`👤 El nombre es: ${resultado}`);
                 break;
-
+            case "contador":
+                const numero = parseInt(document.getElementById("numeroInput").value);
+                if (!isNaN(numero)) {
+                combine.contador.contadorRegresivo(numero);
+                } else {
+                alert("Ingresa un número válido");
+                }break;
+            case "sumaPar":
+                combine.sumaPar.mostrarSuma();
+                break;    
+            case "impares":
+                combine.impares.procesarLimite();
+                break;
+            case "potencia":
+                combine.potencia.mostrarPotencia();
+                break;    
+            case "secuencia":
+                combine.secuencia.procesarTerminos();
+                break;
+           
             default:
                 throw new Error('Operación no válida');
         }
@@ -65,4 +84,4 @@ function mostrarResultado(mensaje, tipo = 'success') {
     resultadosDiv.className = `result ${tipo}`;
 }
 
-btncalcular.addEventListener('click', calcular);
+btncalcular.addEventListener('click', calcular); 

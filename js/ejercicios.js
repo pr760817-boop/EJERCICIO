@@ -54,4 +54,4 @@ const ejercicio5 = (numero) => {
     return factorial;
 };
 
-export { ejercicio1, ejercicio2, ejercicio3, ejercicio4, ejercicio5 };
+export { ejercicio1, ejercicio2, ejercicio3, ejercicio4, ejercicio5,}; 
