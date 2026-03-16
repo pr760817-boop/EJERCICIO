@@ -50,8 +50,25 @@ function calcular() {
                 resultado = combine.name();
                 mostrarResultado(`👤 El nombre es: ${resultado}`);
                 break;
-      
-
+            case "contador":
+                const numero = parseInt(document.getElementById("numeroInput").value);
+                if (!isNaN(numero)) {
+                combine.contador.contadorRegresivo(numero);
+                } else {
+                alert("Ingresa un número válido");
+                }break;
+            case "sumaPar":
+                combine.sumaPar.mostrarSuma();
+                break;    
+            case "impares":
+                combine.impares.procesarLimite();
+                break;
+            case "potencia":
+                combine.potencia.mostrarPotencia();
+                break;    
+            case "secuencia":
+                combine.secuencia.procesarTerminos();
+                break;
            
             default:
                 throw new Error('Operación no válida');
