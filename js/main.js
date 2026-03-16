@@ -13,9 +13,9 @@ function calcular() {
         const num2 = parseFloat(numero2Input.value);
 
         // Validación: solo permitir strings en "nombre"
-        if (operacion !== 'nombre' && (isNaN(num1) || isNaN(num2))) {
-            throw new Error('Por favor ingresa números válidos');
-        }
+        if (operacion !== 'nombre' && operacion !== 'contador' && (isNaN(num1) || isNaN(num2))) {
+    throw new Error('Por favor ingresa números válidos');
+}
 
         let resultado;
 
@@ -50,8 +50,9 @@ function calcular() {
                 resultado = combine.name();
                 mostrarResultado(`👤 El nombre es: ${resultado}`);
                 break;
-            
+      
 
+           
             default:
                 throw new Error('Operación no válida');
         }
