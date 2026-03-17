@@ -86,6 +86,45 @@ function calcular() {
             case 'ejercicio25':
                 resultado = combine.ejer.ejercicio25([1,2,3,4], num1);
                 break;
+            case 'ejercicio26':
+    resultado = combine.ejer.ejercicio26(
+        document.getElementById("arrayInput").value
+            .split(',')
+            .map(Number)
+    );
+    break;
+
+case 'ejercicio27':
+    resultado = combine.ejer.ejercicio27(
+        document.getElementById("arrayInput").value
+            .split(',')
+            .map(Number),
+        document.getElementById("arrayInput").value
+            .split(',')
+            .map(Number)
+    );
+    break;
+
+case 'ejercicio28':
+    resultado = combine.ejer.ejercicio28(num1);
+    break;
+
+case 'ejercicio29': {
+    const matriz = document.getElementById("arrayInput").value
+        .split(';')
+        .map(fila => fila.split(',').map(Number));
+
+    resultado = combine.ejer.ejercicio29(matriz, matriz);
+    break;
+}
+
+case 'ejercicio30':
+    resultado = combine.ejer.ejercicio30(
+        document.getElementById("arrayInput").value
+            .split(',')
+            .map(Number)
+    );
+    break;
 
             default:
                 throw new Error('Operación no válida');
