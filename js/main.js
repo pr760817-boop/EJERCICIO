@@ -101,7 +101,44 @@ function calcular() {
                 resultado = combine.ejer.ejercicio25([1,2,3,4], num1);
                 mostrarResultado(`📌 Resultado: ${resultado}`);
                 break;
-           
+
+            case 'ejercicio26':
+                resultado = combine.calc.ejercicio26(
+                    toArray('subarrayInput')
+                );
+                break;
+
+            case 'ejercicio27':
+                resultado = combine.calc.ejercicio27(
+                    toArray('array1Input'),
+                    toArray('array2Input')
+                );
+                break;
+
+            case 'ejercicio28':
+                resultado = combine.calc.ejercicio28(
+                    Number(document.getElementById('primeLimitInput').value)
+                );
+                break;
+
+            case 'ejercicio29': {
+                const m1 = document.getElementById('matrix1Input').value
+                    .split(';')
+                    .map(row => row.split(',').map(Number));
+
+                const m2 = document.getElementById('matrix2Input').value
+                    .split(';')
+                    .map(row => row.split(',').map(Number));
+
+                resultado = combine.calc.ejercicio29(m1, m2);
+                break;
+            }
+
+            case 'ejercicio30':
+                resultado = combine.calc.ejercicio30(
+                    toArray('mergeSortInput')
+                );
+                break
             default:
                 throw new Error('Operación no válida');
         }
