@@ -69,6 +69,38 @@ function calcular() {
             case "secuencia":
                 combine.secuencia.procesarTerminos();
                 break;
+            case "ejercicio20":
+                resultado = combine.ejer.ejercicio20(numero1Input.value);
+                mostrarResultado(`📌 Resultado: ${resultado}`);
+                break;
+
+            case "ejercicio21":
+                resultado = combine.ejer.ejercicio21([
+                    [1,2],
+                    [3,4]
+                ]);
+                mostrarResultado(`📌 Resultado: ${JSON.stringify(resultado)}`);
+                break;
+
+            case "ejercicio22":
+                resultado = combine.ejer.ejercicio22(num1, num2);
+                mostrarResultado(`📌 Resultado: ${resultado}`);
+                break;
+
+            case "ejercicio23":
+                resultado = combine.ejer.ejercicio23([1,2,3], [4,5]);
+                mostrarResultado(`📌 Resultado: ${resultado}`);
+                break;
+
+            case "ejercicio24":
+                resultado = combine.ejer.ejercicio24([1,3,5,7,9], num1);
+                mostrarResultado(`📌 Resultado: ${resultado}`);
+                break;
+
+            case "ejercicio25":
+                resultado = combine.ejer.ejercicio25([1,2,3,4], num1);
+                mostrarResultado(`📌 Resultado: ${resultado}`);
+                break;
            
             default:
                 throw new Error('Operación no válida');
