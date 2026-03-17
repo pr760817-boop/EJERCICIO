@@ -142,6 +142,100 @@ const ejercicio25 = (arr, posiciones) => {
         let nuevoIndex = (i + k) % arr.length;
         resultado[nuevoIndex] = arr[i];
     }
+   return resultado;
+};
+const ejercicio26 = (a = []) => {
+    if (!a.length) return "Datos inválidos";
+
+    let mejorSuma = -Infinity;
+    let mejorSubarray = [];
+
+    for (let i = 0; i < a.length; i++) {
+        let suma = 0;
+        let temp = [];
+
+        for (let j = i; j < a.length; j++) {
+            suma += a[j];
+            temp.push(a[j]);
+
+            if (suma > mejorSuma) {
+                mejorSuma = suma;
+                mejorSubarray = [...temp];
+            }
+        }
+    }
+
+    return { mejorSubarray, mejorSuma };
+};
+
+const ejercicio27 = () => {
+    const a = [1, 3, 5];
+    const b = [2, 4, 6];
+
+    let resultado = [];
+    let i = 0, j = 0;
+
+    while (i < a.length && j < b.length) {
+        resultado.push(a[i] < b[j] ? a[i++] : b[j++]);
+    }
+
+    return resultado.concat(a.slice(i), b.slice(j));
+};
+
+const ejercicio28 = (a, b) => {
+    function criba(limit) {
+        let primes = Array(limit + 1).fill(true);
+        primes[0] = false;
+        primes[1] = false;
+
+        for (let i = 2; i * i <= limit; i++) {
+            if (primes[i]) {
+                for (let j = i * i; j <= limit; j += i) {
+                    primes[j] = false;
+                }
+            }
+        }
+
+        let resultado = [];
+        for (let k = 2; k <= limit; k++) {
+            if (primes[k]) resultado.push(k);
+        }
+
+        return resultado;
+    }
+
+    return criba(a);
+};
+
+const ejercicio29 = (a, b) => {
+    let resultado = [];
+
+    for (let i = 0; i < a.length; i++) {
+        let fila = [];
+        for (let j = 0; j < b[0].length; j++) {
+            let suma = 0;
+            for (let k = 0; k < a[0].length; k++) {
+                suma += a[i][k] * b[k][j];
+            }
+            fila.push(suma);
+        }
+        resultado.push(fila);
+    }
+    return resultado;
+};
+
+const ejercicio30 = (a = []) => {
+    if (!Array.isArray(a)) return "Error";
+
+    const mezclar = (izq, der) => {
+        let res = [];
+        let i = 0, j = 0;
+
+        while (i < izq.length && j < der.length)
+            res.push(izq[i] < der[j] ? izq[i++] : der[j++]);
+
+        return res.concat(izq.slice(i), der.slice(j));
+    };
 
     return resultado;
 };
@@ -157,5 +251,10 @@ ejercicio21,
 ejercicio22,
 ejercicio23,
 ejercicio24,
-ejercicio25
+ejercicio25,
+ejercicio26,
+ejercicio27,
+ejercicio28,
+ejercicio29,
+ejercicio30,
 };
