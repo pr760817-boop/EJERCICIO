@@ -5,6 +5,7 @@ const numero2Input = document.getElementById('numero2');
 const operacionSelect = document.getElementById('operacion');
 const btncalcular = document.getElementById('btncalcular');
 const resultadosDiv = document.getElementById('resultados');
+const numeroInput = document.getElementById("numeroInput");
 
 function calcular() {
     try {
@@ -12,135 +13,86 @@ function calcular() {
         const num1 = parseFloat(numero1Input.value);
         const num2 = parseFloat(numero2Input.value);
 
-        // Validación: solo permitir strings en "nombre"
-        if (operacion !== 'nombre' && operacion !== 'contador' && (isNaN(num1) || isNaN(num2))) {
-    throw new Error('Por favor ingresa números válidos');
-}
-
         let resultado;
 
         switch (operacion) {
-
-            
             case 'ejercicio1':
-                resultado = combine.ejer.ejercicio1(num1, num2);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
+                resultado = combine.ejer.ejercicio1();
                 break;
-
             case 'ejercicio2':
-                resultado = combine.ejer.ejercicio2(num1, num2);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
+                resultado = combine.ejer.ejercicio2();
                 break;
-
             case 'ejercicio3':
                 resultado = combine.ejer.ejercicio3(num1, num2);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
                 break;
-
             case 'ejercicio4':
-                resultado = combine.ejer.ejercicio4(num1, num2);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
+                resultado = combine.ejer.ejercicio4();
+                break;
+            case 'ejercicio5':
+                resultado = combine.ejer.ejercicio5(num1);
                 break;
 
-            case 'ejercicio5':
-                resultado = combine.ejer.ejercicio5(num1, num2);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
+            // -------- TUS EJERCICIOS 11–15 --------
+            case 'ejercicio11':
+                resultado = combine.ejer.ejercicio11(document.getElementById("arrayInput").value);
                 break;
-            case 'nombre':
-                resultado = combine.name();
-                mostrarResultado(`👤 El nombre es: ${resultado}`);
+            case 'ejercicio12':
+                resultado = combine.ejer.ejercicio12(document.getElementById("arrayInput").value);
                 break;
-            case "contador":
-                const numero = parseInt(document.getElementById("numeroInput").value);
-                if (!isNaN(numero)) {
-                combine.contador.contadorRegresivo(numero);
-                } else {
-                alert("Ingresa un número válido");
-                }break;
-            case "sumaPar":
+            case 'ejercicio13':
+                resultado = combine.ejer.ejercicio13(
+                    document.getElementById("arrayInput").value,
+                    document.getElementById("searchInput").value
+                );
+                break;
+            case 'ejercicio14':
+                resultado = combine.ejer.ejercicio14(document.getElementById("arrayInput").value);
+                break;
+            case 'ejercicio15':
+                resultado = combine.ejer.ejercicio15(document.getElementById("arrayInput").value);
+                break;
+
+            case 'contador':
+                combine.contador.contadorRegresivo(numeroInput.value);
+                break;
+            case 'sumaPar':
                 combine.sumaPar.mostrarSuma();
-                break;    
-            case "impares":
+                break;
+            case 'impares':
                 combine.impares.procesarLimite();
                 break;
-            case "potencia":
+            case 'potencia':
                 combine.potencia.mostrarPotencia();
-                break;    
-            case "secuencia":
+                break;
+            case 'secuencia':
                 combine.secuencia.procesarTerminos();
                 break;
-            case "ejercicio20":
+
+            case 'ejercicio20':
                 resultado = combine.ejer.ejercicio20(numero1Input.value);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
                 break;
-
-            case "ejercicio21":
-                resultado = combine.ejer.ejercicio21([
-                    [1,2],
-                    [3,4]
-                ]);
-                mostrarResultado(`📌 Resultado: ${JSON.stringify(resultado)}`);
+            case 'ejercicio21':
+                resultado = combine.ejer.ejercicio21([[1,2],[3,4]]);
                 break;
-
-            case "ejercicio22":
+            case 'ejercicio22':
                 resultado = combine.ejer.ejercicio22(num1, num2);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
                 break;
-
-            case "ejercicio23":
+            case 'ejercicio23':
                 resultado = combine.ejer.ejercicio23([1,2,3], [4,5]);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
                 break;
-
-            case "ejercicio24":
+            case 'ejercicio24':
                 resultado = combine.ejer.ejercicio24([1,3,5,7,9], num1);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
                 break;
-
-            case "ejercicio25":
+            case 'ejercicio25':
                 resultado = combine.ejer.ejercicio25([1,2,3,4], num1);
-                mostrarResultado(`📌 Resultado: ${resultado}`);
                 break;
 
-            case 'ejercicio26':
-                resultado = combine.calc.ejercicio26(
-                    toArray('subarrayInput')
-                );
-                break;
-
-            case 'ejercicio27':
-                resultado = combine.calc.ejercicio27(
-                    toArray('array1Input'),
-                    toArray('array2Input')
-                );
-                break;
-
-            case 'ejercicio28':
-                resultado = combine.calc.ejercicio28(
-                    Number(document.getElementById('primeLimitInput').value)
-                );
-                break;
-
-            case 'ejercicio29': {
-                const m1 = document.getElementById('matrix1Input').value
-                    .split(';')
-                    .map(row => row.split(',').map(Number));
-
-                const m2 = document.getElementById('matrix2Input').value
-                    .split(';')
-                    .map(row => row.split(',').map(Number));
-
-                resultado = combine.calc.ejercicio29(m1, m2);
-                break;
-            }
-
-            case 'ejercicio30':
-                resultado = combine.calc.ejercicio30(
-                    toArray('mergeSortInput')
-                );
-                break
             default:
                 throw new Error('Operación no válida');
+        }
+
+        if (resultado !== undefined) {
+            mostrarResultado(`📌 Resultado: ${JSON.stringify(resultado)}`);
         }
 
     } catch (error) {
@@ -153,4 +105,4 @@ function mostrarResultado(mensaje, tipo = 'success') {
     resultadosDiv.className = `result ${tipo}`;
 }
 
-btncalcular.addEventListener('click', calcular); 
+btncalcular.addEventListener('click', calcular);
