@@ -103,7 +103,7 @@ const ejercicio14 = (texto) => {
     for (let i = vector.length - 1; i >= 0; i--) invertido.push(vector[i]);
     return invertido;
 };
-
+// ------------------- EJERCICIOS 15–20 -------------------
 const ejercicio15 = (texto) => {
     let vector = texto
         .split(",")
@@ -116,6 +116,77 @@ const ejercicio15 = (texto) => {
     }
     return contador;
 };
+
+
+const ejercicio16 = (a) => {
+    if (!a.length) return 0; 
+
+    let suma = 0;
+
+    for (let i = 0; i < a.length; i++) {
+        suma += a[i];
+    }
+
+    return suma / a.length;
+};
+
+const ejercicio17 = (a, b) => {
+    const arrayA = Array.isArray(a) ? a : [a];
+    const arrayB = Array.isArray(b) ? b : [b];
+
+    const array = arrayA.concat(arrayB);
+    let result = [];
+
+    for (let i = 0; i < array.length; i++) {
+        let repetido = false;
+
+        for (let j = 0; j < result.length; j++) {
+            if (array[i] === result[j]) {
+                repetido = true;
+                break;
+            }
+        }
+
+        if (!repetido) result.push(array[i]);
+    }
+
+    return result;
+};
+
+const ejercicio18 = (a, b) => {
+    const arrayA = Array.isArray(a) ? a : [a];
+    const arrayB = Array.isArray(b) ? b : [b];
+
+    const array = arrayA.concat(arrayB);
+    
+    for (let i = 0; i < array.length - 1; i++) {
+        for (let j = 0; j < array.length - 1 - i; j++) {
+            if (Number(array[j]) > Number(array[j + 1])) {
+                let temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+        }
+    }
+    return array;
+};
+
+const ejercicio19 = (a, b) => {
+    let total = b === "multiply" ? 1 : 0;
+
+    for (let i = 0; i < a.length; i++) {
+        if (b === "multiply") {
+            total *= Number(a[i]);
+        } else if (b === "sum") {
+            total += Number(a[i]);
+        } else {
+            throw new Error("Operación no válida. Usa 'sum' o 'multiply'.");
+        }
+    }
+
+    return total;
+};
+
 
 // ------------------- EJERCICIOS 20–25 -------------------
 
@@ -334,6 +405,10 @@ ejercicio12,
 ejercicio13,
 ejercicio14,
 ejercicio15,
+ejercicio16,
+ejercicio17,
+ejercicio18,
+ejercicio19,
 ejercicio20,
 ejercicio21,
 ejercicio22,
