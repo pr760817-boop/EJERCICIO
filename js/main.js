@@ -32,7 +32,27 @@ function calcular() {
                 resultado = combine.ejer.ejercicio5(num1);
                 break;
 
-            // -------- TUS EJERCICIOS 11–15 --------
+
+// EJERCICIOS 5-10
+            case 'contador':
+                combine.contador.contadorRegresivo(numeroInput.value);
+                break;
+            case 'sumaPar':
+                combine.sumaPar.mostrarSuma();
+                break;
+            case 'impares':
+                combine.impares.procesarLimite();
+                break;
+            case 'potencia':
+                combine.potencia.mostrarPotencia();
+                break;
+            case 'secuencia':
+                combine.secuencia.procesarTerminos();
+                break; 
+
+
+
+// -------- TUS EJERCICIOS 11–15 --------
             case 'ejercicio11':
                 resultado = combine.ejer.ejercicio11(document.getElementById("arrayInput").value);
                 break;
@@ -52,25 +72,29 @@ function calcular() {
                 resultado = combine.ejer.ejercicio15(document.getElementById("arrayInput").value);
                 break;
 
-            case 'contador':
-                combine.contador.contadorRegresivo(numeroInput.value);
-                break;
-            case 'sumaPar':
-                combine.sumaPar.mostrarSuma();
-                break;
-            case 'impares':
-                combine.impares.procesarLimite();
-                break;
-            case 'potencia':
-                combine.potencia.mostrarPotencia();
-                break;
-            case 'secuencia':
-                combine.secuencia.procesarTerminos();
-                break;
+            
+// ejercicios 15-20
+            case 'ejercicio15':
+                 resultado = combine.calc.ejercicio15(Number(num1), Number(num2)); 
+                 break;
+            case 'ejercicio16':
+                 resultado = combine.calc.ejercicio16(toArray('vectorXInput')); 
+                 break;
+            case 'ejercicio17':
+                 resultado = combine.calc.ejercicio17(num1, num2); 
+            break;
+            case 'ejercicio18':
+                 resultado = combine.calc.ejercicio18(num1, num2); 
+                 break;
+            case 'ejercicio19':
+                 resultado = combine.calc.ejercicio19(toArray('vectorXInput'), num2);
+                  break;
 
             case 'ejercicio20':
                 resultado = combine.ejer.ejercicio20(numero1Input.value);
                 break;
+
+// 21-25 EJERCICIOS
             case 'ejercicio21':
                 resultado = combine.ejer.ejercicio21([[1,2],[3,4]]);
                 break;
@@ -86,62 +110,46 @@ function calcular() {
             case 'ejercicio25':
                 resultado = combine.ejer.ejercicio25([1,2,3,4], num1);
                 break;
+
+// 25-30 EJERCICIOS
             case 'ejercicio26':
-    resultado = combine.ejer.ejercicio26(
-        document.getElementById("arrayInput").value
-            .split(',')
-            .map(Number)
-    );
-    break;
+                resultado = combine.ejer.ejercicio26(document.getElementById("arrayInput").value.split(',').map(Number));
+            break;
+            case 'ejercicio27':
+            resultado = combine.ejer.ejercicio27(document.getElementById("arrayInput").value.split(',').map(Number),document.getElementById("arrayInput").value.split(',').map(Number));
+            break;
+            case 'ejercicio28':
+            resultado = combine.ejer.ejercicio28(num1);
+            break;
+            case 'ejercicio29': {
+            const matriz = document.getElementById("arrayInput").value.split(';').map(fila => fila.split(',').map(Number));
+            resultado = combine.ejer.ejercicio29(matriz, matriz);
+            break;}
 
-case 'ejercicio27':
-    resultado = combine.ejer.ejercicio27(
-        document.getElementById("arrayInput").value
-            .split(',')
-            .map(Number),
-        document.getElementById("arrayInput").value
-            .split(',')
-            .map(Number)
-    );
-    break;
+            case 'ejercicio30':
+                resultado = combine.ejer.ejercicio30(
+                    document.getElementById("arrayInput").value
+                        .split(',')
+                        .map(Number)
+                );
+                break;
 
-case 'ejercicio28':
-    resultado = combine.ejer.ejercicio28(num1);
-    break;
+                        default:
+                            throw new Error('Operación no válida');
+                    }
 
-case 'ejercicio29': {
-    const matriz = document.getElementById("arrayInput").value
-        .split(';')
-        .map(fila => fila.split(',').map(Number));
+                    if (resultado !== undefined) {
+                        mostrarResultado(`📌 Resultado: ${JSON.stringify(resultado)}`);
+                    }
 
-    resultado = combine.ejer.ejercicio29(matriz, matriz);
-    break;
-}
+                } catch (error) {
+                    mostrarResultado(`❌ Error: ${error.message}`, 'error');
+                }
+            }
 
-case 'ejercicio30':
-    resultado = combine.ejer.ejercicio30(
-        document.getElementById("arrayInput").value
-            .split(',')
-            .map(Number)
-    );
-    break;
+            function mostrarResultado(mensaje, tipo = 'success') {
+                resultadosDiv.textContent = mensaje;
+                resultadosDiv.className = `result ${tipo}`;
+            }
 
-            default:
-                throw new Error('Operación no válida');
-        }
-
-        if (resultado !== undefined) {
-            mostrarResultado(`📌 Resultado: ${JSON.stringify(resultado)}`);
-        }
-
-    } catch (error) {
-        mostrarResultado(`❌ Error: ${error.message}`, 'error');
-    }
-}
-
-function mostrarResultado(mensaje, tipo = 'success') {
-    resultadosDiv.textContent = mensaje;
-    resultadosDiv.className = `result ${tipo}`;
-}
-
-btncalcular.addEventListener('click', calcular);
+            btncalcular.addEventListener('click', calcular);
