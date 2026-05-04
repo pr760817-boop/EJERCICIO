@@ -1,28 +1,18 @@
-
 function showOddNumbers(limit) {
     let resultado = "";
     let i = 1;
-
     do {
-        if (i % 2 !== 0) {
-            resultado += i + " ";
-        }
+        if (i % 2 !== 0) resultado += i + " ";
         i++;
     } while (i <= limit);
-
     return resultado.trim();
 }
 
-export function procesarLimite() {
-    const limite = parseInt(document.getElementById("numeroInput").value);
-    const salida = document.getElementById("resultados");
-
+export function procesarLimite(n) {
+    const limite = parseInt(n);
     if (isNaN(limite) || limite <= 0) {
-        salida.innerHTML = "❌ Ingresa un número válido y mayor que 0";
-        return;
+        return { result: "❌ Ingresa un número válido mayor que 0" };
     }
     const impares = showOddNumbers(limite);
-    salida.innerHTML = `<p>Números impares hasta ${limite}:<br><strong>${impares}</strong></p>`;
+    return { result: `Números impares hasta ${limite}: ${impares}` };
 }
-
-export { showOddNumbers };
